@@ -191,7 +191,7 @@ nav ul li a:hover {
     display: flex; /* フレックスボックスを使用 */
     flex-direction: column; /* 縦に並べる */
     align-items: flex-start; /* 左寄せ */
-    margin: 10px 0; /* 上下のマージンを追加 */
+    margin: 0 20px; /* 上下のマージンを追加 */
 }
 
 .contact-form label {
