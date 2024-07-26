@@ -22,6 +22,7 @@ nav ul {
     display: flex; /* 横並びにする */
     margin: 0; /* マージンをリセット */
     padding: 0; /* パディングをリセット */
+    list-style-type: none; /* マーカーを消す */
 }
 
 .logo-container {
@@ -97,33 +98,45 @@ nav ul li a:hover {
 }
 
 .project-card {
-    background-color: white; /* カードの背景色 */
+    display: flex; /* フレックスボックスを使用 */
+    flex-direction: column; /* 縦に並べる */
+    justify-content: flex-start; /* 上寄せ */
+    align-items: center; /* 中央寄せ */
+    height: auto; /* 高さを自動調整 */
+    max-width: 300px; /* カードの最大幅を設定 */
+    margin: 10px; /* カードの間隔を調整 */
     border: 1px solid #ddd; /* ボーダーを追加 */
     border-radius: 8px; /* 角を丸くする */
-    width: 300px; /* カードの幅 */
-    margin: 10px; /* マージンを追加 */
-    padding: 15px; /* パディングを追加 */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* シャドウを追加 */
-    text-align: center; /* テキストを中央寄せ */
+    padding: 10px; /* 内側のパディングを追加 */
+    background-color: #fff; /* 背景色を白に設定 */
+}
+
+.image-container {
+    width: 100%; /* 幅を100%に設定 */
+    height: 200px; /* 高さを固定 */
+    display: flex; /* フレックスボックスを使用 */
+    justify-content: center; /* 水平方向の中央寄せ */
+    align-items: center; /* 垂直方向の中央寄せ */
+    overflow: hidden; /* はみ出た部分を隠す */
 }
 
 .project-card img {
-    width: 100%; /* 画像をカードの幅に合わせる */
+    max-width: 100%; /* 幅を100%に設定 */
+    max-height: 200px;
     height: auto; /* 高さを自動調整 */
-    max-height: 200px; /* 最大高さを設定 */
-    object-fit: contain; /* アスペクト比を維持しつつ、画像を収める */
-    border-radius: 5px; /* 画像の角を丸くする */
-    margin-bottom: 10px; /* 画像とテキストの間隔を調整 */
+    object-fit: cover; /* アスペクト比を維持しつつ収める */
 }
 
 .project-card h3 {
     margin: 10px 0; /* マージンを調整 */
     font-size: 1.2em; /* フォントサイズを調整 */
+    text-align: center;
 }
 
 .project-card p {
     font-size: 0.9em; /* フォントサイズを調整 */
     color: #555; /* テキストの色を調整 */
+    text-align: center;
 }
 
 .about {
@@ -167,7 +180,7 @@ nav ul li a:hover {
 }
 
 .contact-form {
-    display: flex;
+    display: block;
     flex-direction: column; /* 縦に並べる */
     align-items: center; /* 中央寄せ */
     max-width: 600px; /* 最大幅を設定 */
@@ -178,12 +191,14 @@ nav ul li a:hover {
     display: flex; /* フレックスボックスを使用 */
     flex-direction: column; /* 縦に並べる */
     align-items: flex-start; /* 左寄せ */
+    margin: 10px 0; /* 上下のマージンを追加 */
 }
 
 .contact-form label {
     display: flex; /* フレックスボックスを使用 */
     align-items: center; /* 中央寄せ */
-    margin: 5px 0; /* 上下のマージンを追加 */
+    margin-left: 0; /* ラジオボタンとテキストの間隔を調整 */
+    margin-bottom: 5px; /* 各ラベルの下にマージンを追加 */
 }
 
 .contact-form input[type="radio"] {
@@ -193,11 +208,14 @@ nav ul li a:hover {
 .contact-form input,
 .contact-form select,
 .contact-form textarea {
-    width: 100%; /* 幅を100%に設定 */
     padding: 10px; /* パディングを追加 */
     margin: 10px 0; /* マージンを追加 */
     border: 1px solid #ccc; /* ボーダーを追加 */
     border-radius: 5px; /* 角を丸くする */
+}
+
+input[type="text" i] ,input[type="email" i],.contact-form textarea {
+    width: 100%;
 }
 
 .contact-form button {
