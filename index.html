@@ -31,18 +31,37 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-        <div class="hamburger-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+
+        <div class="sp-menu">
+            <input type="checkbox" id="sp-menu__check">
+            <label for="sp-menu__check" class="sp-menu__box">
+              <span></span>
+            </label>
+            <div class="sp-menu__content">
+              <ul class="sp-menu__list">
+                <li class="sp-menu__item">
+                  <a class="sp-menu__link" href="#hero">Top</a>
+                </li>
+                <li class="sp-menu__item">
+                  <a class="sp-menu__link" href="#projects">Projects</a>
+                </li>
+                <li class="sp-menu__item">
+                  <a class="sp-menu__link" href="#about">About</a>
+                </li>
+                <li class="sp-menu__item">
+                  <a class="sp-menu__link" href="#contact">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </div>
     </header>
 
     <main>
         <section id="hero" class="hero">
             <div class="hero-content">
                 <h1>WEB,ITの力を使って</h1>
-                <h1>あなたの困りごと解決をお手伝いします</h1>
+                <h1>あなたの困りごと解決を</h1>
+                <h1>お手伝いします</h1>
                 <p>Web Designer & Coder</p>
             </div>
         </section>
@@ -64,7 +83,7 @@
                         <img src="./img/project7.webp" alt="筋トレ記録・分析アプリ" />
                     </div>
                     <h3>筋トレ記録・分析アプリ</h3>
-                    <p>筋トレを記録してデータを分析し、継続していくためのアプリを作成しました。HTML,CSS,React,GAS,Googleスプレッド��ート</p>
+                    <p>筋トレを記録してデータを分析し、継続していくためのアプリを作成しました。HTML,CSS,React,GAS,Googleスプレッドシート</p>
                 </a>
             </div>
             <div class="project-card">
@@ -130,8 +149,8 @@
                 <p>HTML、CSS、JavaScriptを基礎として、React.jsを用いた現代的なウェブアプリケーション開発に取り組んでいます。</p>
                 <p>常に新しい技術トレンドにアンテナを張り、ユーザビリティとパフォーマンスの最適化に力を入れています。</p>
                 <p>ExcelVBAやGoogleAppScriptを用いた業務効率化アプリの作成も行っております。</p>
-                <p>このポートフォリオサイトでは、私のスキルセットと制作例をご覧いただけます。</p>
-                <p>ぜひ、各プロジェクトの詳細をチェックしていただき、私の技術力と創造性をご確���ください。</p>
+                <p>このポートフォリオサイトでは、私のスキルセットと制作例をご覧いたただけます。</p>
+                <p>ぜひ、各プロジェクトの詳細をチェックしていただき、私の技術力と創造性をご確認ください。</p>
                 <p>新しい挑戦や協業の機会を心よりお待ちしております。</p>
             </div>
             <h3>スキルセット</h3>
@@ -151,26 +170,26 @@
             <h2>Contact</h2>
             <form class="contact-form">
                 <label>お名前*</label>
-                <input type="text" placeholder="お名前*" required />
+                    <input type="text" placeholder="お名前*" required />
                 <label>メールアドレス*</label>
-                <input type="email" placeholder="メールアドレス*" required />
+                    <input type="email" placeholder="メールアドレス*" required />
                 <label>相談項目*</label>
-                <div>
-                    <label>
-                        <input type="radio" name="consultation" value="web" required /> WEB制作のご相談
-                    </label>
-                    <label>
-                        <input type="radio" name="consultation" value="business" required /> 業務効率化アプリ作成のご相談
-                    </label>
-                    <label>
-                        <input type="radio" name="consultation" value="other" required /> その他
-                    </label>
-                </div>
+                    <div>
+                        <label>
+                            <input type="radio" name="consultation" value="web" required /> WEB制作のご相談
+                        </label>
+                        <label>
+                            <input type="radio" name="consultation" value="business" required /> 業務効率化アプリ作成のご相談
+                        </label>
+                        <label>
+                            <input type="radio" name="consultation" value="other" required /> その他
+                        </label>
+                    </div>
                 <label>お問合せ内容*</label>
-                <textarea placeholder="お問合せ内容*" required></textarea>
+                    <textarea placeholder="お問合せ内容*" required></textarea>
                 <label>個人情報の取り扱いについて</label>
-                <div>ご記入いただいた個人情報は、</div>
-                <div>お問い合わせへの対応及び確認のためのみに利用します。</div>
+                    <div id="personal_information">ご記入いただいた個人情報は、</div>
+                    <div id="personal_information">お問い合わせへの対応及び確認のためのみに利用します。</div>
                 <label>
                     <input type="checkbox" required /> 同意する
                 </label>
@@ -183,6 +202,6 @@
         <p>© Papa Pixel Lab</p>
     </footer>
 
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
 </body>
 </html>

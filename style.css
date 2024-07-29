@@ -8,13 +8,196 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px; /* 上下のパディングを調整 */
+    padding: 10px 0; /* 上下のパディングを調整 */
     background-color: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: relative; /* 追加 */
+    position: fixed; /* ヘッダーを固定 */
+    top: 0; /* 上部に配置 */
+    left: 0; /* 左端に配置 */
+    width: 100%; /* 幅を100%に設定 */
+    z-index: 1000; /* 他の要素の上に表示 */
 }
 
+/* 画面サイズが1280px以上の時はスマホ用メニューは非表示 */
+@media screen and (min-width: 769px) {
+    .sp-menu {
+      display: none;
+    }
+  }
+  .sp-menu__box {
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: flex;
+    height: 60px;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+    z-index: 90;
+    background: #55ACEF;
+  }
+  .sp-menu__box span,
+  .sp-menu__box span:before,
+  .sp-menu__box span:after {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background: #ffffff;
+    position: absolute;
+  }
+  .sp-menu__box span:before {
+    bottom: 8px;
+  }
+  .sp-menu__box span:after {
+    top: 8px;
+  }
+  #sp-menu__check {
+    display: none;
+  }
+  #sp-menu__check:checked ~ .sp-menu__box span {
+    background: rgba(255, 255, 255, 0);
+  }
+  #sp-menu__check:checked ~ .sp-menu__box span::before {
+    bottom: 0;
+    transform: rotate(45deg);
+  }
+  #sp-menu__check:checked ~ .sp-menu__box span::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+  #sp-menu__check:checked ~ .sp-menu__content {
+    left: 0;
+  }
+  .sp-menu__content {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 100%;
+    z-index: 80;
+    background-color: #55ACEF;
+    transition: all 0.2s;
+  }
+  .sp-menu__list {
+    padding: 70px 10px 0;
+  }
+  .sp-menu__item {
+    border-bottom: solid 1px #ffffff;
+    list-style: none;
+  }
+  .sp-menu__link {
+    display: block;
+    width: 100%;
+    font-size: 15px;
+    box-sizing: border-box;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 9px 15px 10px 0;
+    text-align: right;
+  }
+    .header {
+      width: 300px;
+    }
+    .header__nav-area {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        z-index: 9;
+        height: 100vh;
+        width: 300px;
+        visibility: hidden;
+        padding-top: 60px;
+        background-color: #fff;
+        transition: 0.4s;
+    }
+    .header__nav-area.-active {
+        left: 0;
+      visibility: visible;
+    }
+    .global-navigation {
+        padding-top: 40px;
+        padding-right: 25px;
+        padding-bottom: 120px;
+        padding-left: 25px;
+    }
+    .global-navigation__list > li {
+        padding-bottom: 20px;
+        border-bottom: 2px solid #e7e9ee;
+    }
+    .global-navigation__list > li + li {
+      margin-top: 20px;
+    }
+    .global-navigation__link {
+      display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #172e59;
+        font-weight: 900;
+        transition: color 0.4s;
+        font-size: 0.875rem;
+    }
+    .global-navigation__link.-accordion {
+        position: relative;
+        background: none;
+        border: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 100%;
+        padding: 0;
+    }
+    .global-navigation__link.-accordion::after {
+        content: '';
+        display: block;
+        height: 12px;
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        width: 2px;
+        background-color: #ed3242;
+        transform: translateY(-50%);
+        transition: transform 0.4s;
+    }
+    .global-navigation__link.-accordion::before {
+        content: '';
+        display: block;
+        height: 2px;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 12px;
+        background-color: #ed3242;
+        transform: translateY(-50%);
+        
+    }
+    .global-navigation__link.-active::after {
+      transform: translateY(-50%) rotate(-90deg);
+    }
+    .accordion {
+        height: 0;
+        overflow: hidden;
+        visibility: hidden;
+        transition: 0.4s;
+    }
+    .accordion.-active {
+        height: auto;
+        padding-top: 30px;
+        visibility: visible;
+    }
+    .accordion__list li {
+        font-size: 0.75rem;
+    }
+    .accordion__list li + li {
+         margin-top: 21px;
+    }
+    .accordion__link {
+        color: #172e59;
+    }
+
 nav {
+    display: flex; /* デフォルトでは横並び */
     margin-left: auto; /* ナビゲーションを右端に移動 */
 }
 
@@ -25,9 +208,49 @@ nav ul {
     list-style-type: none; /* マーカーを消す */
 }
 
+nav ul li {
+    margin: 0 15px; /* アイテム間のスペース */
+}
+
+nav ul li a {
+    text-decoration: none; /* 下線を削除 */
+    color: black; /* テキストの色を黒に設定 */
+    font-weight: 500; /* フォントの太さを調�� */
+}
+
+nav ul li a:hover {
+    color: #007BFF; /* ホバー時の色を変更 */
+}
+
+nav.active {
+    display: flex; /* メニューがアクティブなときに表示 */
+}
+
+@media (max-width: 768px) {
+    nav {
+        display: none; /* モバイルでは非表示 */
+        flex-direction: column; /* 縦に並べる */
+        position: absolute; /* 絶対位置 */
+        top: 60px; /* ヘッダーの下に配置 */
+        right: 0;
+        background-color: #333; /* 背景色 */
+        width: 100%; /* 幅を100%に */
+    }
+
+    nav.active {
+        display: flex; /* アクティブなときに表示 */
+    }
+
+    .hamburger-menu {
+        display: flex; /* モバイルでは表示 */
+    }
+}
+
 .logo-container {
     display: flex;
     align-items: center;
+    padding-left: 10px;
+
 }
 
 .logo-icon {
@@ -75,7 +298,7 @@ nav ul li a:hover {
 }
 
 .hero-content h1 {
-    font-size: 2.5em;
+    font-size: 2em;
     margin: 0;
 }
 
@@ -191,7 +414,12 @@ nav ul li a:hover {
     display: flex; /* フレックスボックスを使用 */
     flex-direction: column; /* 縦に並べる */
     align-items: flex-start; /* 左寄せ */
-    margin: 0 20px; /* 上下のマージンを追加 */
+    margin: 5px 0; /* 上下のマージンを追加 */
+    text-align: left;
+}
+
+#personal_information {
+    margin-left: 20px;
 }
 
 .contact-form label {
@@ -203,6 +431,7 @@ nav ul li a:hover {
 
 .contact-form input[type="radio"] {
     margin-right: 10px; /* ラジオボタンとテキストの間隔を調整 */
+    margin-left: 20px;
 }
 
 .contact-form input,
@@ -241,4 +470,13 @@ input[type="text" i] ,input[type="email" i],.contact-form textarea {
 .footer p {
     margin: 0; /* マージンを削除 */
     color: #555; /* テキストの色を調整 */
+}
+
+main {
+    margin-top: 60px; /* ヘッダーの高さに合わせて調整 */
+}
+
+section {
+    scroll-margin-top: 60px; /* ヘッダーの高さに合わせて調整 */
+    padding-top: 60px; /* ヘッダーの高さに合わせて調整 */
 }

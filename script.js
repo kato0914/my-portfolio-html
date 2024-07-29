@@ -1,9 +1,22 @@
 // ハンバーガーメニューの動作
-const hamburgerMenu = document.querySelector('.hamburger-menu');
-const nav = document.querySelector('nav');
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburgerMenu = document.querySelector('.sp-menu');
+    const navLinks = document.querySelectorAll('.sp-menu__link');
+    const checkbox = document.getElementById('sp-menu__check');
 
-hamburgerMenu.addEventListener('click', () => {
-    nav.classList.toggle('active');
+    if (hamburgerMenu) {
+        hamburgerMenu.addEventListener('click', () => {
+            // メニューの開閉処理
+            checkbox.checked = !checkbox.checked;
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // メニューを閉じる
+                checkbox.checked = true; // チェックを外す
+            });
+        });
+    }
 });
 
 // スクロール時のヘッダー背景変更
