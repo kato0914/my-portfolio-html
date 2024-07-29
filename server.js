@@ -32,7 +32,7 @@ const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
         user: process.env.EMAIL_USER, // 環境変数から取得
-        pass: process.env.EMAIL_PASS, // 環境変数から取得
+        pass: process.env.EMAIL_PASS, // 環境変数から取得　
     },
 });
 
