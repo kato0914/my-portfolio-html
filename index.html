@@ -168,11 +168,11 @@
 
         <section id="contact" class="contact">
             <h2>Contact</h2>
-            <form class="contact-form">
+            <form class="contact-form" action="/send" method="POST">
                 <label>お名前*</label>
-                    <input type="text" placeholder="お名前*" required />
+                    <input type="text" name="name" placeholder="お名前*" required />
                 <label>メールアドレス*</label>
-                    <input type="email" placeholder="メールアドレス*" required />
+                    <input type="email" name="email" placeholder="メールアドレス*" required />
                 <label>相談項目*</label>
                     <div>
                         <label>
@@ -186,7 +186,7 @@
                         </label>
                     </div>
                 <label>お問合せ内容*</label>
-                    <textarea placeholder="お問合せ内容*" required></textarea>
+                    <textarea name="message" placeholder="お問合せ内容*" required></textarea>
                 <label>個人情報の取り扱いについて</label>
                     <div id="personal_information">ご記入いただいた個人情報は、</div>
                     <div id="personal_information">お問い合わせへの対応及び確認のためのみに利用します。</div>
