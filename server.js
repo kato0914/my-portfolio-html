@@ -56,11 +56,42 @@ app.post('/send', async (req, res) => {
         if (error) {
             return res.status(500).send('メール送信に失敗しました。');
         }
-        res.status(200).send('お問合せが送信されました。');
+        res.status(200).send('��問合せが送信されました。');
     });
 });
 
 // サーバーの起動
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+// フロントエンドのコード
+const contactForm = document.getElementById('contact-form');
+
+contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(contactForm);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+        const response = await fetch('/api/send', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const result = await response.json();
+        console.log(result);
+        alert('お問合せが送信されました。');
+    } catch (error) {
+        console.error('Error:', error);
+        alert('送信中にエラーが発生しました。');
+    }
 });
