@@ -33,8 +33,31 @@ window.addEventListener('scroll', () => {
 const contactForm = document.getElementById('contact-form');
 
 contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    // フォーム送信の処理をここに追加
+    e.preventDefault(); // デフォルトのフォーム送信を防ぐ
+
+    const formData = new FormData(contactForm);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+        const response = await fetch('/api/send', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data), // フォームデータをJSON形式に変換
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const result = await response.json();
+        console.log(result);
+        alert('お問合せが送信されました。');
+    } catch (error) {
+        console.error('Error:', error);
+        alert('送信中にエラーが発生しました。');
+    }
 });
 
 // その他の必要なJavaScript機能をここに追加
