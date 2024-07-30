@@ -52,17 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     throw new Error('Network response was not ok');
                 }
 
-                const result = await response.json();
-                console.log(result);
-                alert('お問合せが送信されました。');
-            } catch (error) {
-                console.error('Error:', error);
-                alert('送信中にエラーが発生しました。');
-            }
-        });
-    } else {
-        console.error('Contact form not found');
+        const result = await response.json();
+        console.log(result);
+        alert('お問合せが送信されました。');
+    } catch (error) {
+        console.error('Error:', error);
+        alert('送信中にエラーが発生しました。');
     }
-});
-
-// その他の必要なJavaScript機能をここに追加
+})}})
