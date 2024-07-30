@@ -53,7 +53,7 @@ app.post('/send', async (req, res) => {
     // メールの送信
     const mailOptions = {
         from: email,
-        to: process.env.EMAIL_USER, // 管理者のメールアドレス
+        to: 'katoj62@gmail.com', // 管理者のメールアドレス
         subject: '新しいお問合せ',
         text: `お名前: ${name}\nメールアドレス: ${email}\n相談項目: ${consultation}\nメッセージ: ${message}`,
     };
