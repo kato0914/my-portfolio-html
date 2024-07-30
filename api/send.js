@@ -1,7 +1,6 @@
 export default function handler(req, res) {
     if (req.method === 'POST') {
         // リクエストの処理
-        app.post('/send', async (req, res) => {
             const { name, email, consultation, message } = req.body;
         
             // データベースに保存
@@ -20,7 +19,7 @@ export default function handler(req, res) {
                 to: 'katoj62@gmail.com', // 管理者のメールアドレス
                 subject: '新しいお問合せ',
                 text: `お名前: ${name}\nメールアドレス: ${email}\n相談項目: ${consultation}\nメッセージ: ${message}`,
-            }});
+            };
         // ここでメール送信やデータベースへの保存処理を行う
         res.status(200).json({ message: 'お問合せが送信されました！' });
     } else {
