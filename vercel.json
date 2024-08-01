@@ -1,8 +1,19 @@
 {
+    "version": 2,
     "builds": [
       {
-        "src": "package.json",
-        "use": "@vercel/next"
+        "src": "*.html",
+        "use": "@vercel/static"
+      }
+    ],
+    "routes": [
+      {
+        "handle": "filesystem"
+      },
+      {
+        "src": "/(.*)",
+        "status": 404,
+        "dest": "/404.html"
       }
     ]
   }
