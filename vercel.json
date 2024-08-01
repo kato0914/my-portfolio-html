@@ -1,26 +1,21 @@
 {
     "version": 2,
     "builds": [
-      {
-        "src": "*.html",
-        "use": "@vercel/static"
-      },
-      {
-        "src": "*.js",
-        "use": "@vercel/static"
-      },
-      {
-        "src": "*.css",
-        "use": "@vercel/static"
-      }
+      { "src": "*.html", "use": "@vercel/static" },
+      { "src": "*.js", "use": "@vercel/static" },
+      { "src": "*.css", "use": "@vercel/static" },
+      { "src": "img/**", "use": "@vercel/static" }
     ],
     "routes": [
       {
-        "handle": "filesystem"
-      },
-      {
         "src": "/(.*)",
-        "dest": "/index.html"
-      }
+        "headers": {
+          "Access-Control-Allow-Origin": "*"
+        },
+        "continue": true
+      },
+      { "handle": "filesystem" },
+      { "src": "/img/(.*)", "dest": "/img/$1" },
+      { "src": "/(.*)", "dest": "/index.html" }
     ]
   }
