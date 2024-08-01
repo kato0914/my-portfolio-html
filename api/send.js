@@ -21,7 +21,7 @@ export default async function handler(req, res) {
         });
 
         const mailOptions = {
-            from: process.env.EMAIL_FROM, // 送信元のメールアドレスを環境変数から設定
+            from: 'katoj62@gmail.com', // 送信元のメールアドレスを環境変数から設定
             to: 'katoj62@gmail.com',
             subject: '新しいお問合せ',
             text: `お名前: ${name}\nメールアドレス: ${email}\n相談項目: ${consultation}\nメッセージ: ${message}`,
